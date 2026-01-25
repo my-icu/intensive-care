@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MY-ICU: Pinderfields Hospital Intensive Care Unit</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="flex flex-col min-h-screen bg-gradient-to-r from-sky-50 to-blue-100">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4">
+    <nav class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+      <span class="text-2xl font-bold text-blue-800">MY-ICU</span>
+      <div class="hidden sm:flex space-x-4">
+        <span class="text-sm text-gray-600">
+          Pinderfields Hospital · Mid Yorkshire Teaching NHS Trust
+        </span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero / Banner -->
+  <section
+    class="relative h-48 sm:h-64 md:h-80 flex items-center justify-center text-center text-white overflow-hidden bg-cover bg-center"
+    style="background-image: url('hero.jpg');"
+  >
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <div class="relative z-10 px-4 sm:px-6 bg-black/50 p-4 rounded-lg">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight">
+        MY-ICU
+      </h1>
+      <p class="text-sm sm:text-base md:text-lg">
+        Pinderfields Hospital Intensive Care Unit
+      </p>
+    </div>
+  </section>
+
+  <!-- Links Section -->
+  <section class="container mx-auto py-10 px-4 sm:px-6 flex flex-col sm:flex-row gap-6 justify-center">
+
+    <!-- MY-ACE -->
+    <a href="/index.html"
+       class="w-full sm:w-80 px-6 py-6 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-lg shadow text-center transition">
+      <h2 class="text-xl mb-2">MY-ACE Teaching</h2>
+      <p class="text-sm opacity-90">
+        Anaesthetics & Critical Care education programme
+      </p>
+    </a>
+
+    <!-- ICU Procedures -->
+    <a href="/icu-procedures/index.html"
+       class="w-full sm:w-80 px-6 py-6 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow text-center transition">
+      <h2 class="text-xl mb-2">ICU Procedure Documentation</h2>
+      <p class="text-sm opacity-90">
+        Guidelines, SOPs & procedural resources
+      </p>
+    </a>
+
+  </section>
+
+  <!-- Footer spacer -->
+  <div class="flex-grow"></div>
+
+</body>
+</html>
