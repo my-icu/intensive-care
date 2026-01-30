@@ -441,6 +441,42 @@ function generateNote() {
   output += `Assistant: ${document.getElementById("assistant").value}\n`;
   output += `Supervisor: ${document.getElementById("supervisor").value}\n\n`;
 
+ // INTUBATION DETAILS
+  output += "=== INTUBATION DETAILS ===\n";
+  output += `Indication: ${document.getElementById("indication_intub").value}\n\n`;
+
+  output += "=== PERSONNEL ===\n";
+  output += `Airway: ${document.getElementById("airway_name").value} (Grade: ${document.getElementById("airway_grade").value})\n`;
+  output += `Drugs: ${document.getElementById("drugs_name").value} (Grade: ${document.getElementById("drugs_grade").value})\n`;
+  output += `Other assistant: ${document.getElementById("assistant_name").value} (Grade: ${document.getElementById("assistant_grade").value})\n\n`;
+
+  // Intubation technical details
+  output += "=== TECHNIQUE ===\n";
+  output += `Pre-oxygenation: ${getMultiValues("preox", "preox_other")}\n`;
+  output += `Laryngoscopy grade: ${document.getElementById("laryngoscopy_grade").value}\n`;
+  output += `Laryngoscope used: ${getMultiValues("laryngoscope", "laryngoscope_other")}\n`;
+  output += `Adjuncts used: ${document.getElementById("adjuncts_used").value}\n`;
+  output += `ETT size: ${document.getElementById("ett_size").value}\n`;
+  output += `Length at teeth: ${document.getElementById("ett_length").value} cm\n`;
+  output += `Route: ${getValue("route")}\n\n`;
+
+  output += "=== DRUGS USED ===\n";
+  output += `Opiate: ${document.getElementById("drug_opiate").value}\n`;
+  output += `Induction: ${document.getElementById("drug_induction").value}\n`;
+  output += `Muscle relaxant: ${document.getElementById("drug_nmb").value}\n`;
+  output += `Vaso-active agent: ${document.getElementById("drug_vasoactive").value}\n`;
+  output += `Other drugs: ${document.getElementById("drug_other").value}\n\n`;
+
+  output += `Spinal precautions used: ${document.getElementById("spinal_precautions").value}\n`;
+  output += `Comments: ${document.getElementById("comments").value}\n`;
+  output += `Adverse events: ${document.getElementById("adverse_events").value}\n`;
+
+  document.getElementById("output").value = output;
+}
+
+output += "\n----------------------------------------\n\n";
+
+  output += "=== SAFETY CHECKLIST ===\n";
   // BEFORE THE PROCEDURE
   output += "=== BEFORE THE PROCEDURE ===\n";
   output += `• Patient identity checked: ${getValue("identity")}\n`;
@@ -483,39 +519,6 @@ function generateNote() {
   output += `• Analgesia/sedation started: ${getValue("analgSed")}\n`;
   output += `• Chest X-ray required: ${getValue("cxrRequired")}\n`;
   output += `• Documentation: ${getValue("documentation")}\n\n`;
-
-  // INTUBATION DETAILS
-  output += "=== INTUBATION DETAILS ===\n";
-  output += `Indication: ${document.getElementById("indication_intub").value}\n\n`;
-
-  output += "=== PERSONNEL ===\n";
-  output += `Airway: ${document.getElementById("airway_name").value} (Grade: ${document.getElementById("airway_grade").value})\n`;
-  output += `Drugs: ${document.getElementById("drugs_name").value} (Grade: ${document.getElementById("drugs_grade").value})\n`;
-  output += `Other assistant: ${document.getElementById("assistant_name").value} (Grade: ${document.getElementById("assistant_grade").value})\n\n`;
-
-  // Intubation technical details
-  output += "=== TECHNIQUE ===\n";
-  output += `Pre-oxygenation: ${getMultiValues("preox", "preox_other")}\n`;
-  output += `Laryngoscopy grade: ${document.getElementById("laryngoscopy_grade").value}\n`;
-  output += `Laryngoscope used: ${getMultiValues("laryngoscope", "laryngoscope_other")}\n`;
-  output += `Adjuncts used: ${document.getElementById("adjuncts_used").value}\n`;
-  output += `ETT size: ${document.getElementById("ett_size").value}\n`;
-  output += `Length at teeth: ${document.getElementById("ett_length").value} cm\n`;
-  output += `Route: ${getValue("route")}\n\n`;
-
-  output += "=== DRUGS USED ===\n";
-  output += `Opiate: ${document.getElementById("drug_opiate").value}\n`;
-  output += `Induction: ${document.getElementById("drug_induction").value}\n`;
-  output += `Muscle relaxant: ${document.getElementById("drug_nmb").value}\n`;
-  output += `Vaso-active agent: ${document.getElementById("drug_vasoactive").value}\n`;
-  output += `Other drugs: ${document.getElementById("drug_other").value}\n\n`;
-
-  output += `Spinal precautions used: ${document.getElementById("spinal_precautions").value}\n`;
-  output += `Comments: ${document.getElementById("comments").value}\n`;
-  output += `Adverse events: ${document.getElementById("adverse_events").value}\n`;
-
-  document.getElementById("output").value = output;
-}
 
 function copyText() {
   navigator.clipboard.writeText(document.getElementById("output").value);
