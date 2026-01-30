@@ -435,9 +435,15 @@ function getValue(name) {
 }
 
 function generateNote() {
-  
-  // === LINE INSERTION DETAILS ===
-  let output += "=== LINE INSERTION DETAILS ===\n";
+  let output = "CENTRAL LINE INSERTION DETAILS\n\n";
+
+  // Procedure details
+  output += `Procedure Date: ${document.getElementById('proc_date').value}\n`;
+  output += `Time: ${document.getElementById('proc_time').value}\n`;
+  output += `Operator: ${document.getElementById('operator').value}\n`;
+  output += `Assistant: ${document.getElementById('assistant').value}\n`;
+  output += `Supervisor: ${document.getElementById('supervisor').value}\n\n`;
+
 
   // Location
   let siteLocation = getValue("location");
@@ -504,17 +510,12 @@ output += `• Anatomical site: ${anatomicalSite}\n`;
   if (antt_reason.trim() !== "") {
     output += `• ANTT exception reason: ${antt_reason}\n`;
   }
-  
-  
-   output = "CENTRAL LINE SAFETY CHECKLIST\n\n";
 
-  // Procedure details
-  output += `Procedure Date: ${document.getElementById('proc_date').value}\n`;
-  output += `Time: ${document.getElementById('proc_time').value}\n`;
-  output += `Operator: ${document.getElementById('operator').value}\n`;
-  output += `Assistant: ${document.getElementById('assistant').value}\n`;
-  output += `Supervisor: ${document.getElementById('supervisor').value}\n\n`;
 
+// === LINE INSERTION DETAILS ===
+  output += "=== SAFETY CHECKLIST ===================================\n";
+
+  
   // BEFORE THE PROCEDURE
   output += "=== BEFORE THE PROCEDURE ===\n";
   output += `• Patient identity checked: ${getValue("identity")}\n`;
@@ -554,7 +555,6 @@ output += `• Anatomical site: ${anatomicalSite}\n`;
   output += `• Paired gases taken: Venous ${venousGas ? venousGas + " mmHg" : "N/A"}, Arterial ${arterialGas ? arterialGas + " mmHg" : "N/A"}\n\n`;
 
   
-
   // Final
   document.getElementById("output").value = output;
 }
