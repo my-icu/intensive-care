@@ -438,7 +438,13 @@ function generateNote() {
   let output = "CENTRAL LINE INSERTION DETAILS\n\n";
 
   // Procedure details
-  output += `Procedure Date: ${document.getElementById('proc_date').value}\n`;
+  const rawDate = document.getElementById('proc_date').value;
+const ukDate = rawDate
+  ? rawDate.split("-").reverse().join("/")
+  : "";
+
+output += `Procedure Date: ${ukDate}\n`;
+
   output += `Time: ${document.getElementById('proc_time').value}\n`;
   output += `Operator: ${document.getElementById('operator').value}\n`;
   output += `Assistant: ${document.getElementById('assistant').value}\n`;
