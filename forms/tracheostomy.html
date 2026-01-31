@@ -241,6 +241,19 @@ function generateNote() {
   out += `Assistant: ${document.getElementById("assistant").value}\n`;
   out += `Supervisor: ${document.getElementById("supervisor").value}\n\n`;
 
+  out += "=== TRACHEOSTOMY DETAILS ===\n";
+  out += `Indication: ${document.getElementById("indication").value}\n`;
+  out += `Tube size: ${document.getElementById("tubeSize").value}\n`;
+  out += `Cuffed: ${getValue("cuffed")}\n`;
+  out += `Carina distance (flexed): ${document.getElementById("carinaFlexed").value}\n`;
+  out += `Carina distance (extended): ${document.getElementById("carinaExtended").value}\n`;
+  out += `Bronchoscopy findings: ${document.getElementById("bronchFindings").value}\n`;
+  out += `Complications: ${document.getElementById("complications").value}\n`;
+  out += `Comments: ${document.getElementById("comments").value}\n`;
+
+  output += "\n----------------------------------------\n\n";
+
+  out += "=== SAFETY CHECKLIST ===\n";
   out += "=== BEFORE THE PROCEDURE ===\n";
   out += `• Team introductions done: ${getValue("teamIntro")}\n`;
   out += `• Patient identity checked: ${getValue("identity")}\n`;
@@ -274,15 +287,6 @@ function generateNote() {
   out += `• Sharps disposed: ${getValue("sharps")}\n`;
   out += `• Bedhead sign placed: ${getValue("bedhead")}\n\n`;
 
-  out += "=== TRACHEOSTOMY DETAILS ===\n";
-  out += `Indication: ${document.getElementById("indication").value}\n`;
-  out += `Tube size: ${document.getElementById("tubeSize").value}\n`;
-  out += `Cuffed: ${getValue("cuffed")}\n`;
-  out += `Carina distance (flexed): ${document.getElementById("carinaFlexed").value}\n`;
-  out += `Carina distance (extended): ${document.getElementById("carinaExtended").value}\n`;
-  out += `Bronchoscopy findings: ${document.getElementById("bronchFindings").value}\n`;
-  out += `Complications: ${document.getElementById("complications").value}\n`;
-  out += `Comments: ${document.getElementById("comments").value}\n`;
 
   document.getElementById("output").value = out;
 }
