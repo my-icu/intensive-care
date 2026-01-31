@@ -137,55 +137,112 @@
 
     </div>
 
-    <!-- PROCEDURE DETAILS -->
-    <div class="bg-purple-600 text-white font-bold text-lg px-4 py-2 rounded mt-6">
-      PROCEDURE DETAILS (TRACHEOSTOMY)
+   <!-- PROCEDURE DETAILS -->
+<div class="bg-purple-600 text-white font-bold text-lg px-4 py-2 rounded mt-6">
+  PROCEDURE DETAILS (TRACHEOSTOMY)
+</div>
+
+<div class="mt-4 space-y-6">
+
+  <div>
+    <div class="font-medium">Operator:</div>
+    <input type="text" id="operatorName" class="border p-2 rounded w-full">
+  </div>
+
+  <div>
+    <div class="font-medium">Airway:</div>
+    <input type="text" id="airwayName" class="border p-2 rounded w-full">
+  </div>
+
+  <div>
+    <div class="font-medium">Indication for tracheostomy:</div>
+    <input type="text" id="indication" class="border p-2 rounded w-full">
+  </div>
+
+  <div class="font-bold text-lg mt-4">Operation Notes</div>
+
+  <div>
+    <div class="font-medium">Anaesthesia:</div>
+    <label><input type="checkbox" name="anaesthesia" value="Yes" onchange="onlyOne(this)"> Yes</label>
+    <label><input type="checkbox" name="anaesthesia" value="No" onchange="onlyOne(this)"> No</label>
+  </div>
+
+  <div>
+    <div class="font-medium">FiO₂ 1.0:</div>
+    <label><input type="checkbox" name="fio2" value="Yes" onchange="onlyOne(this)"> Yes</label>
+    <label><input type="checkbox" name="fio2" value="No" onchange="onlyOne(this)"> No</label>
+  </div>
+
+  <div>
+    <div class="font-medium">Paralysed:</div>
+    <label><input type="checkbox" name="paralysed" value="Yes" onchange="onlyOne(this)"> Yes</label>
+    <label><input type="checkbox" name="paralysed" value="No" onchange="onlyOne(this)"> No</label>
+  </div>
+
+  <div>
+    <div class="font-medium">USS used:</div>
+    <label><input type="checkbox" name="uss" value="No" onchange="onlyOne(this)"> No</label>
+    <label><input type="checkbox" name="uss" value="Yes – prior to procedure" onchange="onlyOne(this)"> Yes – prior</label>
+    <label><input type="checkbox" name="uss" value="Yes – during procedure" onchange="onlyOne(this)"> Yes – during</label>
+  </div>
+
+  <div>
+    <div class="font-medium">
+      Aseptic technique (gown, hat, mask, sterile gloves, 2% chlorhexidine):
     </div>
+    <label><input type="checkbox" name="aseptic" value="Yes" onchange="onlyOne(this)"> Yes</label>
+    <label><input type="checkbox" name="aseptic" value="No" onchange="onlyOne(this)"> No</label>
+  </div>
 
-    <div class="mt-4 space-y-6">
-
-      <div>
-        <div class="font-medium">Indication for tracheostomy:</div>
-        <input type="text" id="indication" class="border p-2 rounded w-full">
-      </div>
-
-      <div>
-        <div class="font-medium">Tube size:</div>
-        <input type="text" id="tubeSize" class="border p-2 rounded w-full">
-      </div>
-
-      <div>
-        <div class="font-medium">Cuffed?</div>
-        <label><input type="checkbox" name="cuffed" value="Yes" onchange="onlyOne(this)"> Yes</label>
-        <label><input type="checkbox" name="cuffed" value="No" onchange="onlyOne(this)"> No</label>
-      </div>
-
-      <div>
-        <div class="font-medium">Distance from carina (flexed):</div>
-        <input type="text" id="carinaFlexed" class="border p-2 rounded w-full">
-      </div>
-
-      <div>
-        <div class="font-medium">Distance from carina (extended):</div>
-        <input type="text" id="carinaExtended" class="border p-2 rounded w-full">
-      </div>
-
-      <div>
-        <div class="font-medium">Bronchoscopy findings:</div>
-        <textarea id="bronchFindings" class="border p-2 rounded w-full" rows="3"></textarea>
-      </div>
-
-      <div>
-        <div class="font-medium">Complications:</div>
-        <textarea id="complications" class="border p-2 rounded w-full" rows="3"></textarea>
-      </div>
-
-      <div>
-        <div class="font-medium">Additional comments:</div>
-        <textarea id="comments" class="border p-2 rounded w-full" rows="3"></textarea>
-      </div>
-
+  <div>
+    <div class="font-medium">
+      1% Lidocaine with 1:200,000 adrenaline skin infiltration:
     </div>
+    <label><input type="checkbox" name="lidocaine" value="Yes" onchange="onlyOne(this)"> Yes</label>
+    <label><input type="checkbox" name="lidocaine" value="No" onchange="onlyOne(this)"> No</label>
+  </div>
+
+  <div>
+    <div class="font-medium">Tracheostomy tube type and size:</div>
+    <input type="text" id="tubeTypeSize" class="border p-2 rounded w-full">
+  </div>
+
+  <div>
+    <div class="font-medium">Cuffed:</div>
+    <label><input type="checkbox" name="cuffed" value="Yes" onchange="onlyOne(this)"> Yes</label>
+    <label><input type="checkbox" name="cuffed" value="No" onchange="onlyOne(this)"> No</label>
+  </div>
+
+  <div>
+    <div class="font-medium">Technique:</div>
+    <label><input type="checkbox" name="technique" value="Modified Ciaglia (single dilator)" onchange="onlyOne(this)"> Modified Ciaglia</label>
+    <label><input type="checkbox" name="technique" value="Other" onchange="onlyOne(this)"> Other</label>
+    <input type="text" id="techniqueOther" placeholder="If other, specify"
+           class="border p-2 rounded w-full mt-2">
+  </div>
+
+  <div>
+    <div class="font-medium">Operation notes:</div>
+    <textarea id="opNotes" class="border p-2 rounded w-full" rows="4"></textarea>
+  </div>
+
+  <div>
+    <div class="font-medium">Distance from carina:</div>
+    <input type="text" id="carinaDistance" class="border p-2 rounded w-full">
+  </div>
+
+  <div>
+    <div class="font-medium">Complications:</div>
+    <textarea id="complications" class="border p-2 rounded w-full" rows="3"></textarea>
+  </div>
+
+  <div>
+    <div class="font-medium">Additional comments:</div>
+    <textarea id="comments" class="border p-2 rounded w-full" rows="3"></textarea>
+  </div>
+
+</div>
+
 
     <!-- GENERATE BUTTON -->
     <button onclick="generateNote()"
@@ -235,21 +292,30 @@ function generateNote() {
   }
 
   out += "=== PROCEDURE DETAILS ===\n";
-  out += `Procedure Date: ${ukDate}\n`;
-  out += `Time: ${document.getElementById("proc_time").value}\n`;
-  out += `Operator: ${document.getElementById("operator").value}\n`;
-  out += `Assistant: ${document.getElementById("assistant").value}\n`;
-  out += `Supervisor: ${document.getElementById("supervisor").value}\n\n`;
+out += `Operator: ${document.getElementById("operatorName").value}\n`;
+out += `Airway: ${document.getElementById("airwayName").value}\n`;
+out += `Indication: ${document.getElementById("indication").value}\n\n`;
 
-  out += "=== TRACHEOSTOMY DETAILS ===\n";
-  out += `Indication: ${document.getElementById("indication").value}\n`;
-  out += `Tube size: ${document.getElementById("tubeSize").value}\n`;
-  out += `Cuffed: ${getValue("cuffed")}\n`;
-  out += `Carina distance (flexed): ${document.getElementById("carinaFlexed").value}\n`;
-  out += `Carina distance (extended): ${document.getElementById("carinaExtended").value}\n`;
-  out += `Bronchoscopy findings: ${document.getElementById("bronchFindings").value}\n`;
-  out += `Complications: ${document.getElementById("complications").value}\n`;
-  out += `Comments: ${document.getElementById("comments").value}\n`;
+out += "=== OPERATION NOTES ===\n";
+out += `Anaesthesia: ${getValue("anaesthesia")}\n`;
+out += `FiO₂ 1.0: ${getValue("fio2")}\n`;
+out += `Paralysed: ${getValue("paralysed")}\n`;
+out += `USS used: ${getValue("uss")}\n`;
+out += `Aseptic technique: ${getValue("aseptic")}\n`;
+out += `Local anaesthetic used: ${getValue("lidocaine")}\n`;
+out += `Tracheostomy tube type & size: ${document.getElementById("tubeTypeSize").value}\n`;
+out += `Cuffed: ${getValue("cuffed")}\n`;
+
+let technique = getValue("technique");
+if (technique === "Other") {
+  technique += ` – ${document.getElementById("techniqueOther").value}`;
+}
+out += `Technique: ${technique}\n`;
+
+out += `Operation notes: ${document.getElementById("opNotes").value}\n`;
+out += `Distance from carina: ${document.getElementById("carinaDistance").value}\n`;
+out += `Complications: ${document.getElementById("complications").value}\n`;
+out += `Additional comments: ${document.getElementById("comments").value}\n\n`;
 
   output += "\n----------------------------------------\n\n";
 
