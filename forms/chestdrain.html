@@ -244,6 +244,20 @@ function generateNote() {
   out += `Assistant: ${document.getElementById("assistant").value}\n`;
   out += `Supervisor: ${document.getElementById("supervisor").value}\n\n`;
 
+out += "=== CHEST DRAIN DETAILS ===\n";
+  out += `Indication: ${document.getElementById("indication").value}\n`;
+  out += `Side/location: ${document.getElementById("location").value}\n`;
+  out += `Drain size: ${document.getElementById("size").value}\n`;
+  out += `Technique: ${document.getElementById("technique").value}\n`;
+  out += `Analgesia/sedation: ${document.getElementById("analgesia").value}\n`;
+  out += `Ultrasound: ${document.getElementById("usUsed").value}\n`;
+  out += `Fluid characteristics: ${document.getElementById("fluid").value}\n`;
+  out += `Complications: ${document.getElementById("complications").value}\n`;
+  out += `Comments: ${document.getElementById("comments").value}\n`;
+
+  output += "\n----------------------------------------\n\n";
+  
+out += "=== SAFETY CHECKLIST ===\n";
   out += "=== BEFORE THE PROCEDURE ===\n";
   out += `• Team introductions: ${getValue("teamIntro")}\n`;
   out += `• Patient identity: ${getValue("identity")}\n`;
@@ -274,16 +288,6 @@ function generateNote() {
   out += `• Sharps disposed: ${getValue("sharps")}\n`;
   out += `• Equipment issues: ${getValue("equipIssues")}\n\n`;
 
-  out += "=== CHEST DRAIN DETAILS ===\n";
-  out += `Indication: ${document.getElementById("indication").value}\n`;
-  out += `Side/location: ${document.getElementById("location").value}\n`;
-  out += `Drain size: ${document.getElementById("size").value}\n`;
-  out += `Technique: ${document.getElementById("technique").value}\n`;
-  out += `Analgesia/sedation: ${document.getElementById("analgesia").value}\n`;
-  out += `Ultrasound: ${document.getElementById("usUsed").value}\n`;
-  out += `Fluid characteristics: ${document.getElementById("fluid").value}\n`;
-  out += `Complications: ${document.getElementById("complications").value}\n`;
-  out += `Comments: ${document.getElementById("comments").value}\n`;
 
   document.getElementById("output").value = out;
 }
