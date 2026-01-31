@@ -471,7 +471,7 @@ function generateNote() {
   output += `Comments: ${document.getElementById("comments").value}\n`;
   output += `Adverse events: ${document.getElementById("adverse_events").value}\n`;
 
-  document.getElementById("output").value = output;
+  
 
 
 output += "\n----------------------------------------\n\n";
@@ -519,8 +519,9 @@ output += "\n----------------------------------------\n\n";
   output += `• Analgesia/sedation started: ${getValue("analgSed")}\n`;
   output += `• Chest X-ray required: ${getValue("cxrRequired")}\n`;
   output += `• Documentation: ${getValue("documentation")}\n\n`;
-}
-  
+
+  document.getElementById("output").value = output;
+  }
 function copyText() {
   navigator.clipboard.writeText(document.getElementById("output").value);
 }
