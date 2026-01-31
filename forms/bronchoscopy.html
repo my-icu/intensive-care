@@ -277,7 +277,7 @@ function getValue(name) {
 }
 
 function generateNote() {
-  let output = "BRONCHOSCOPY SAFETY CHECKLIST\n\n";
+  let output = "BRONCHOSCOPY DETAILS\n\n";
  
  // Procedure details
   let rawDate = document.getElementById('proc_date').value; // YYYY-MM-DD
@@ -319,9 +319,11 @@ output += `Lower lobe - ${document.getElementById("findings_right_lower").value}
 
 output += `• Details of samples sent to lab/tests requested: ${document.getElementById("samples_lab").value}\n\n\n\n`;
 
+  output += "\n----------------------------------------\n\n";
+
 
   // BEFORE THE PROCEDURE
-  output += "=== LocSSIP (Local Safety Standards for Invasive Procedures) checklist ===\n\n";
+  output += "=== SAFETY CHECKLIST ===\n\n";
   output += "=== BEFORE THE PROCEDURE ===\n";
   output += `• Patient identity checked: ${getValue("identity")}\n`;
   output += `• Consent completed: ${getValue("consent")}\n`;
