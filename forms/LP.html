@@ -58,6 +58,14 @@
     </div>
 
     <div>
+      <div class="font-medium">Drug chart checked for anti-coagulants?</div>
+      <div class="flex gap-4">
+        <label><input type="checkbox" name="anticoag" value="Yes" onchange="onlyOne(this)"> Yes</label>
+        <label><input type="checkbox" name="anticoag" value="No" onchange="onlyOne(this)"> No</label>
+      </div>
+    </div>
+
+    <div>
       <div class="font-medium">Safe to proceed?</div>
       <div class="flex gap-4">
         <label><input type="checkbox" name="safe" value="Yes" onchange="onlyOne(this)"> Yes</label>
@@ -116,7 +124,7 @@
     <div>
       <div class="font-medium">Position:</div>
       <div class="flex gap-4">
-        <label><input type="checkbox" name="position" value="Left lateral" onchange="onlyOne(this)"> Left lateral</label>
+        <label><input type="checkbox" name="position" value="Lateral" onchange="onlyOne(this)"> Lateral</label>
         <label><input type="checkbox" name="position" value="Sitting" onchange="onlyOne(this)"> Sitting</label>
       </div>
     </div>
@@ -128,6 +136,11 @@
         <label><input type="checkbox" name="level" value="L3/4" onchange="onlyOne(this)"> L3/4</label>
         <label><input type="checkbox" name="level" value="L4/5" onchange="onlyOne(this)"> L4/5</label>
       </div>
+    </div>
+
+    <div>
+      <label class="font-medium">Needle used:</label>
+      <input id="needle" class="border p-2 rounded w-full">
     </div>
 
     <div class="flex gap-4">
@@ -150,8 +163,18 @@
     <label><input type="checkbox" name="samples" value="Glucose"> Glucose</label>
     <label><input type="checkbox" name="samples" value="Cytology"> Cytology</label>
     <label><input type="checkbox" name="samples" value="Xanthochromia"> Xanthochromia</label>
-    <label><input type="checkbox" name="samples" value="Oligoclonal bands"> Oligoclonal bands</label>
+
+    <label class="flex items-center gap-2">
+      <input type="checkbox" name="samples" value="Other">
+      Other:
+      <input id="samples_other" class="border p-1 rounded w-64" placeholder="Specify">
+    </label>
   </div>
+
+  <!-- COMMENTS -->
+  <h2 class="text-xl font-bold bg-gray-700 text-white p-2 mt-8">ADDITIONAL COMMENTS</h2>
+
+  <textarea id="comments" class="w-full border p-3 rounded mt-4" rows="4"></textarea>
 
   <!-- GENERATE -->
   <button onclick="generateNote()" class="mt-8 bg-blue-600 text-white px-4 py-2 rounded">
@@ -182,18 +205,25 @@ function generateNote() {
   o += `Indication: ${indication.value}\n`;
   o += `Imaging reviewed: ${getValue("imaging")}\n`;
   o += `Contraindications checked: ${getValue("contra")}\n`;
+  o += `Drug chart checked for anticoagulants: ${getValue("anticoag")}\n`;
   o += `Safe to proceed: ${getValue("safe")}\n`;
   o += `Coagulation checked: ${getValue("coag")} (INR ${inr.value}, Platelets ${platelets.value})\n\n`;
 
   o += `Consent: Capacity ${getValue("capacity")}, ${getValue("consent")}\n\n`;
 
   o += `Position: ${getValue("position")}, Level: ${getValue("level")}\n`;
+  o += `Needle used: ${needle.value}\n`;
   o += `Attempts: ${attempts.value}, Opening pressure: ${opening_pressure.value}\n`;
   o += `CSF appearance: ${appearance.value}\n\n`;
 
   const samples = [...document.querySelectorAll('input[name="samples"]:checked')]
-                  .map(b => b.value).join(", ");
-  o += `Samples sent: ${samples || "None"}\n`;
+    .map(b => b.value === "Other" ? `Other (${samples_other.value})` : b.value)
+    .join(", ");
+  o += `Samples sent: ${samples || "None"}\n\n`;
+
+  if (comments.value.trim()) {
+    o += `Additional comments: ${comments.value}\n`;
+  }
 
   output.value = o;
 }
