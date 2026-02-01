@@ -66,14 +66,6 @@
     </div>
 
     <div>
-      <div class="font-medium">Safe to proceed?</div>
-      <div class="flex gap-4">
-        <label><input type="checkbox" name="safe" value="Yes" onchange="onlyOne(this)"> Yes</label>
-        <label><input type="checkbox" name="safe" value="No" onchange="onlyOne(this)"> No</label>
-      </div>
-    </div>
-
-    <div>
       <div class="font-medium">Coagulation checked?</div>
       <div class="flex gap-4">
         <label><input type="checkbox" name="coag" value="Yes" onchange="onlyOne(this)"> Yes</label>
@@ -157,11 +149,20 @@
   <!-- SAMPLES -->
   <h2 class="text-xl font-bold bg-green-600 text-white p-2 mt-8">CSF SAMPLES SENT</h2>
 
-  <div class="flex flex-col gap-2 mt-4">
-    <label><input type="checkbox" name="samples" value="MC&S / Virology"> MC&S (+/- virology)</label>
+  <div class="space-y-3 mt-4">
+
+    <div>
+      <label class="font-medium">Number of white top bottles sent to lab:</label>
+      <input id="white_tops" type="number" class="border p-2 rounded w-24 mt-1">
+      <div class="text-sm text-gray-600 mt-1">
+        Consider sending a 4th white top “save” sample for future investigations
+      </div>
+    </div>
+
+    <label><input type="checkbox" name="samples" value="MC&S"> MC&amp;S</label>
+    <label><input type="checkbox" name="samples" value="Virology"> Virology</label>
     <label><input type="checkbox" name="samples" value="Protein"> Protein</label>
     <label><input type="checkbox" name="samples" value="Glucose"> Glucose</label>
-    <label><input type="checkbox" name="samples" value="Cytology"> Cytology</label>
     <label><input type="checkbox" name="samples" value="Xanthochromia"> Xanthochromia</label>
 
     <label class="flex items-center gap-2">
@@ -173,7 +174,6 @@
 
   <!-- COMMENTS -->
   <h2 class="text-xl font-bold bg-gray-700 text-white p-2 mt-8">ADDITIONAL COMMENTS</h2>
-
   <textarea id="comments" class="w-full border p-3 rounded mt-4" rows="4"></textarea>
 
   <!-- GENERATE -->
@@ -206,7 +206,6 @@ function generateNote() {
   o += `Imaging reviewed: ${getValue("imaging")}\n`;
   o += `Contraindications checked: ${getValue("contra")}\n`;
   o += `Drug chart checked for anticoagulants: ${getValue("anticoag")}\n`;
-  o += `Safe to proceed: ${getValue("safe")}\n`;
   o += `Coagulation checked: ${getValue("coag")} (INR ${inr.value}, Platelets ${platelets.value})\n\n`;
 
   o += `Consent: Capacity ${getValue("capacity")}, ${getValue("consent")}\n\n`;
@@ -215,6 +214,8 @@ function generateNote() {
   o += `Needle used: ${needle.value}\n`;
   o += `Attempts: ${attempts.value}, Opening pressure: ${opening_pressure.value}\n`;
   o += `CSF appearance: ${appearance.value}\n\n`;
+
+  o += `White top bottles sent: ${white_tops.value}\n`;
 
   const samples = [...document.querySelectorAll('input[name="samples"]:checked')]
     .map(b => b.value === "Other" ? `Other (${samples_other.value})` : b.value)
